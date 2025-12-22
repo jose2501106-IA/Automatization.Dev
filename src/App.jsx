@@ -2,12 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { 
   Menu, X, ArrowRight, Bot, Workflow, Zap, 
   Database, Terminal, Code, CheckCircle, ExternalLink, 
-  Mail, Calendar, Linkedin, Github, Instagram, Layers, Sparkles,
+  Mail, Calendar, Linkedin, Github, Instagram, Youtube, Layers, Sparkles,
   Loader, Cpu, Play, BrainCircuit, FileText, ShieldCheck, 
   MessageSquareText, Network, Server, Lock, CreditCard, 
   BarChart, RefreshCw, Sliders
 } from 'lucide-react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// Icono personalizado de TikTok
+const TikTokIcon = ({ className }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,12 +55,10 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="text-2xl font-bold tracking-tight text-white flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
             
-            {/* --- TU LOGO (Reemplazar con archivo real cuando lo tengas) --- */}
+            {/* --- LOGO --- */}
             <div className="w-10 h-10 bg-[#EA4B71]/20 border border-[#EA4B71] rounded-lg flex items-center justify-center">
-               {/* <img src="/logo-systemic.png" alt="Logo" className="w-full h-full object-contain p-1" /> */}
                <span className="text-[10px] text-[#EA4B71] font-bold">LOGO</span>
             </div>
-            {/* ------------------------------------- */}
 
             <span className="tracking-tight">Systemic World</span>
           </div>
@@ -265,7 +281,6 @@ const App = () => {
               solution="Query SQL identifica pacientes 'Top Tier' inactivos por >90 días. Python genera una oferta personalizada basada en su historial. n8n envía el mensaje vía WhatsApp."
               result="Recuperación del 18% de la base inactiva y $450k MXN generados en 1 mes."
               tags={['PostgreSQL', 'Python Analytics', 'n8n', 'WhatsApp']}
-              // NUEVA IMAGEN: Estrategia Digital y Conexión
               imageUrl="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
             />
           </div>
@@ -337,10 +352,10 @@ const App = () => {
                <Calendar className="w-5 h-5" />
                Agendar Sesión de Diagnóstico
              </button>
-             <button className="w-full md:w-auto px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white text-lg font-medium rounded-lg transition-all flex items-center justify-center gap-3 border border-gray-700">
+             <a href="mailto:project.manager@systemicworld.tech" className="w-full md:w-auto px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white text-lg font-medium rounded-lg transition-all flex items-center justify-center gap-3 border border-gray-700">
                <Mail className="w-5 h-5" />
                Email
-             </button>
+             </a>
           </div>
 
           <div className="flex justify-center gap-8 mb-8">
@@ -352,6 +367,12 @@ const App = () => {
             </a>
             <a href="https://instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
               <Instagram className="w-6 h-6" />
+            </a>
+            <a href="https://tiktok.com/@tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
+              <TikTokIcon className="w-6 h-6" />
+            </a>
+            <a href="https://youtube.com/@tu-canal" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-red-600 hover:text-white text-gray-400 transition-all">
+              <Youtube className="w-6 h-6" />
             </a>
           </div>
         </div>
