@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   Menu, X, ArrowRight, Bot, Workflow, Zap, 
   Database, Terminal, Code, CheckCircle, ExternalLink, 
-  Mail, Calendar, Linkedin, Github, Layers, Sparkles,
-  Loader, Cpu, Play
+  Mail, Calendar, Linkedin, Github, Instagram, Layers, Sparkles,
+  Loader, Cpu, Play, BrainCircuit, FileText, ShieldCheck, 
+  MessageSquareText, Network, Server, Lock, CreditCard, 
+  BarChart, RefreshCw, Sliders
 } from 'lucide-react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -33,18 +35,24 @@ const App = () => {
       {/* --- NAVIGATION --- */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="text-2xl font-bold tracking-tight text-white flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <div className="w-8 h-8 bg-gradient-to-br from-[#EA4B71] to-[#FF6D5A] rounded-lg flex items-center justify-center">
-              <Workflow className="w-5 h-5 text-white" />
+          <div className="text-2xl font-bold tracking-tight text-white flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
+            
+            {/* --- ESPACIO PARA TU LOGO DE CANVA --- */}
+            {/* Cuando tengas tu archivo, guárdalo en la carpeta public y cambia el src */}
+            {/* Ejemplo: <img src="/logo-systemic.png" alt="Logo" className="w-10 h-10 object-contain" /> */}
+            <div className="w-10 h-10 bg-[#EA4B71]/20 border border-[#EA4B71] rounded-lg flex items-center justify-center">
+               <span className="text-[10px] text-[#EA4B71] font-bold">LOGO</span>
             </div>
-            <span>Automation.Dev</span>
+            {/* ------------------------------------- */}
+
+            <span className="tracking-tight">Systemic World</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Home', 'Services', 'Playground', 'Workflows', 'About'].map((item) => (
+            {['Home', 'Soluciones', 'Lab', 'Casos', 'Filosofía'].map((item) => (
               <button 
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item.toLowerCase() === 'soluciones' ? 'services' : item.toLowerCase() === 'lab' ? 'playground' : item.toLowerCase() === 'casos' ? 'workflows' : item.toLowerCase() === 'filosofía' ? 'about' : item.toLowerCase())}
                 className="text-sm font-medium text-gray-300 hover:text-[#EA4B71] transition-colors"
               >
                 {item}
@@ -54,7 +62,7 @@ const App = () => {
               onClick={() => scrollToSection('contact')}
               className="px-5 py-2.5 bg-[#EA4B71] hover:bg-[#D43A5A] text-white text-sm font-semibold rounded-full transition-all hover:shadow-[0_0_20px_rgba(234,75,113,0.3)]"
             >
-              Hablemos
+              Consultoría
             </button>
           </div>
 
@@ -65,27 +73,22 @@ const App = () => {
 
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-[#0B0F19] border-b border-gray-800 p-6 flex flex-col gap-6 shadow-2xl">
-            {['Home', 'Services', 'Playground', 'Workflows', 'About'].map((item) => (
+            {['Home', 'Soluciones', 'Lab', 'Casos'].map((item) => (
               <button 
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item.toLowerCase() === 'soluciones' ? 'services' : item.toLowerCase() === 'lab' ? 'playground' : item.toLowerCase() === 'casos' ? 'workflows' : item.toLowerCase())}
                 className="text-left text-lg font-medium text-gray-300"
               >
                 {item}
               </button>
             ))}
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="w-full py-3 bg-[#EA4B71] text-white font-semibold rounded-lg"
-            >
-              Hablemos
-            </button>
           </div>
         )}
       </nav>
 
       {/* --- HERO SECTION --- */}
       <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#EA4B71]/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#3776AB]/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
@@ -93,87 +96,93 @@ const App = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-800/50 border border-gray-700 text-[#EA4B71] text-xs font-semibold uppercase tracking-wider mb-6">
               <span className="w-2 h-2 rounded-full bg-[#EA4B71] animate-pulse"></span>
-              Especialista en n8n & Python
+              Automation Lab
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6">
-              Automatización inteligente con <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EA4B71] to-[#FF6D5A]">n8n</span> y <span className="text-[#3776AB]">Python</span>.
+              Transformo el caos en un <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EA4B71] to-[#FF6D5A]">Sistema Inteligente</span>.
             </h1>
             <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
-              Conecto tus aplicaciones, elimino tareas repetitivas y creo flujos de trabajo inteligentes que escalan contigo. La potencia del Low-Code con la flexibilidad del código puro.
+              No pongo parches. Diseño ecosistemas de automatización con <strong>n8n, Python y LLMs</strong> que leen documentos, toman decisiones y ejecutan procesos complejos, permitiendo que tu negocio funcione como un reloj suizo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={() => scrollToSection('playground')} className="px-8 py-4 bg-[#EA4B71] hover:bg-[#D43A5A] text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all hover:translate-y-[-2px] shadow-[0_0_20px_rgba(234,75,113,0.3)]">
-                <Sparkles className="w-4 h-4" /> Pruébalo Ahora
+                <BrainCircuit className="w-4 h-4" /> Diseñar Sistema
               </button>
               <button onClick={() => scrollToSection('workflows')} className="px-8 py-4 bg-transparent border border-gray-700 hover:border-gray-500 text-white font-medium rounded-lg transition-all hover:bg-white/5">
-                Ver Automatizaciones
+                Ver Casos de Uso
               </button>
             </div>
           </div>
           
+          {/* Visual: Systemic Architecture */}
           <div className="relative h-[400px] lg:h-[500px] w-full flex items-center justify-center">
              <div className="relative w-full h-full border border-gray-800/50 rounded-2xl bg-[#0F172A]/30 backdrop-blur-sm p-8 overflow-hidden group">
                 <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-700/50 -z-10"></div>
-                <div className="flex flex-col gap-6 h-full justify-center relative z-10">
-                  <div className="bg-[#1A202C] border border-[#EA4B71] p-4 rounded-lg w-48 shadow-[0_0_15px_rgba(234,75,113,0.2)] ml-0 self-start">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-4 h-4 text-[#EA4B71]" />
-                      <span className="text-xs font-bold text-white uppercase">Webhook Trigger</span>
+                
+                {/* Visualizing the "System" */}
+                <div className="flex flex-col gap-4 h-full justify-center relative z-10">
+                  
+                  {/* Step 1: Chaos Input */}
+                  <div className="flex items-center gap-4 self-start animate-in slide-in-from-left duration-1000">
+                    <div className="bg-[#1A202C] border border-gray-600 p-3 rounded-lg w-12 h-12 flex items-center justify-center">
+                      <FileText className="text-gray-400" />
                     </div>
-                    <div className="text-[10px] text-gray-400 font-mono bg-black/30 p-2 rounded">POST /lead-signup</div>
-                  </div>
-
-                  <div className="bg-[#1A202C] border border-[#3776AB] p-4 rounded-lg w-72 shadow-[0_0_15px_rgba(55,118,171,0.2)] self-center relative">
-                    <div className="absolute -top-6 left-1/2 w-[2px] h-6 bg-gray-500"></div>
-                    <div className="absolute -bottom-6 left-1/2 w-[2px] h-6 bg-gray-500"></div>
-                    <div className="flex items-center gap-2 mb-2 justify-between">
-                      <div className="flex items-center gap-2">
-                        <Terminal className="w-4 h-4 text-[#3776AB]" />
-                        <span className="text-xs font-bold text-white uppercase">Python Code Node</span>
-                      </div>
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    </div>
-                    <div className="text-[10px] text-gray-300 font-mono bg-[#0B0F19] p-2 rounded border-l-2 border-[#3776AB]">
-                      <span className="text-[#EA4B71]">for</span> item <span className="text-[#EA4B71]">in</span> items:<br/>
-                      &nbsp;&nbsp;data = json.loads(item.json)<br/>
-                      &nbsp;&nbsp;score = <span className="text-yellow-400">calculate_lead_score</span>(data)<br/>
-                      &nbsp;&nbsp;<span className="text-[#EA4B71]">return</span> &#123;"score": score&#125;
+                    <div className="h-[2px] w-12 bg-gray-600"></div>
+                    <div className="bg-[#1A202C] border border-[#EA4B71] p-4 rounded-lg w-48 shadow-[0_0_15px_rgba(234,75,113,0.2)]">
+                      <div className="text-xs font-bold text-[#EA4B71] mb-1">INPUT NO ESTRUCTURADO</div>
+                      <div className="text-[10px] text-gray-400">PDFs, Emails, WhatsApps</div>
                     </div>
                   </div>
 
-                  <div className="bg-[#1A202C] border border-green-500 p-4 rounded-lg w-48 shadow-[0_0_15px_rgba(34,197,94,0.2)] ml-auto self-end">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Database className="w-4 h-4 text-green-500" />
-                      <span className="text-xs font-bold text-white uppercase">Update CRM</span>
-                    </div>
-                    <div className="text-[10px] text-gray-400 font-mono bg-black/30 p-2 rounded">Action: Upsert Row</div>
+                  {/* Step 2: Systemic Core (The Lab) */}
+                  <div className="flex items-center gap-4 self-center ml-12 animate-in slide-in-from-left duration-1000 delay-300">
+                     <div className="bg-[#1A202C] border border-[#3776AB] p-6 rounded-xl w-64 shadow-[0_0_20px_rgba(55,118,171,0.2)] relative">
+                        <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#EA4B71] rounded-full flex items-center justify-center text-[10px] font-bold text-white border-4 border-[#0B0F19]">LAB</div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Network className="w-5 h-5 text-[#3776AB]" />
+                          <span className="text-sm font-bold text-white">Systemic Core</span>
+                        </div>
+                        <div className="text-[10px] text-gray-400 font-mono bg-black/30 p-2 rounded mb-2">
+                          Processing Logic & AI Decisions...
+                        </div>
+                        <div className="flex gap-1">
+                          <div className="w-full h-1 bg-green-500 rounded animate-pulse"></div>
+                          <div className="w-2/3 h-1 bg-green-500 rounded animate-pulse delay-75"></div>
+                        </div>
+                     </div>
                   </div>
+
+                  {/* Step 3: Structured Output */}
+                  <div className="flex items-center gap-4 self-end animate-in slide-in-from-left duration-1000 delay-500">
+                    <div className="bg-[#1A202C] border border-green-500 p-4 rounded-lg w-48 shadow-[0_0_15px_rgba(34,197,94,0.2)] text-right">
+                      <div className="text-xs font-bold text-green-500 mb-1">RESULTADO DE NEGOCIO</div>
+                      <div className="text-[10px] text-gray-400">Ejecución & Reportes</div>
+                    </div>
+                    <div className="h-[2px] w-12 bg-green-500"></div>
+                     <div className="bg-[#1A202C] border border-green-500 p-3 rounded-lg w-12 h-12 flex items-center justify-center">
+                      <CheckCircle className="text-green-500" />
+                    </div>
+                  </div>
+
                 </div>
              </div>
           </div>
         </div>
       </section>
 
-      {/* --- EXPERTISE / STACK --- */}
+      {/* --- STACK --- */}
       <section className="py-10 border-y border-gray-800 bg-[#0F172A]/30">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-8">
-            Herramientas & Tecnologías
+            Systemic Tech Stack
           </p>
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-80">
-             <div className="flex items-center gap-2">
-               <span className="w-3 h-3 rounded-full bg-[#EA4B71]"></span>
-               <span className="text-xl font-bold text-white">n8n</span>
-             </div>
-             <div className="flex items-center gap-2">
-               <span className="w-3 h-3 rounded-full bg-[#3776AB]"></span>
-               <span className="text-xl font-bold text-white">Python</span>
-             </div>
-             {['OpenAI API', 'Webhooks', 'REST APIs', 'JSON', 'PostgreSQL', 'Google Workspace'].map((tech) => (
-               <span key={tech} className="text-lg font-medium text-gray-400 hover:text-white transition-all cursor-default">
-                 {tech}
-               </span>
-             ))}
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-6 opacity-90">
+             <StackBadge color="bg-[#EA4B71]" text="n8n" />
+             <StackBadge color="bg-[#3776AB]" text="Python" />
+             <StackBadge color="bg-green-500" text="Supabase" />
+             <StackBadge color="bg-purple-500" text="Stripe" />
+             <StackBadge color="bg-blue-500" text="Looker Studio" />
+             <StackBadge color="bg-yellow-500" text="OpenAI" />
           </div>
         </div>
       </section>
@@ -182,41 +191,42 @@ const App = () => {
       <section id="services" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Servicios de Automatización</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Soluciones Sistémicas</h2>
             <p className="text-gray-400 max-w-2xl">
-              Me especializo en crear puentes entre tus aplicaciones. Si tiene una API, puedo automatizarlo.
+              No vendo configuraciones básicas. Construyo infraestructura digital que escala con tu negocio y elimina el error humano.
             </p>
           </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ServiceCard 
               icon={<Workflow />}
               title="n8n Workflow Design"
-              desc="Diseño e implementación de flujos de trabajo complejos en n8n. Desde sincronización de datos simple hasta orquestación de procesos multi-etapa."
+              desc="Arquitectura de flujos de trabajo avanzados. No solo conecto aplicaciones; diseño la lógica de negocio completa para que opere de forma autónoma y resiliente a errores."
             />
             <ServiceCard 
-              icon={<Code />}
-              title="Python Scripting"
-              desc="Creación de nodos personalizados en Python dentro de n8n para manipulación de datos avanzada, cálculos matemáticos o lógica que las herramientas no-code no pueden manejar."
+              icon={<Network />}
+              title="API Integrations"
+              desc="Conecto lo imposible. Si tiene una API, puedo integrarlo. Unifico tu CRM, ERP, Pasarelas de Pago (Stripe) y Herramientas de Marketing en un solo ecosistema."
+            />
+            <ServiceCard 
+              icon={<RefreshCw />}
+              title="Data Transformation (ETL)"
+              desc="Tus datos están sucios y desordenados. Uso Python para extraerlos, limpiarlos, transformarlos y cargarlos en bases de datos modernas como Supabase."
+            />
+            <ServiceCard 
+              icon={<Sliders />}
+              title="Process Optimization"
+              desc="Consultoría operativa. Antes de automatizar, optimizo. Analizo tus procesos actuales para eliminar cuellos de botella y redundancias."
             />
             <ServiceCard 
               icon={<Bot />}
               title="AI Agents & Chatbots"
-              desc="Integración de LLMs (GPT-4, Claude) en tus flujos de n8n para analizar correos, resumir textos o crear asistentes inteligentes conectados a tus datos."
+              desc="Asistentes inteligentes que no solo responden, sino que ejecutan. Conecto LLMs a tu WhatsApp para calificar leads, agendar citas en Calendly y sincronizar tu CRM."
             />
             <ServiceCard 
-              icon={<Database />}
-              title="API Integrations"
-              desc="Conecto herramientas que 'no se hablan' entre sí. CRM, Google Sheets, Slack, Airtable, Shopify y sistemas legacy mediante APIs REST/GraphQL."
-            />
-            <ServiceCard 
-              icon={<Layers />}
-              title="Data Transformation"
-              desc="Limpieza y formateo automático de datos (ETL ligero) usando Python antes de enviarlos a tu base de datos o dashboard."
-            />
-            <ServiceCard 
-              icon={<Zap />}
-              title="Process Optimization"
-              desc="Auditoría de tus procesos actuales para detectar cuellos de botella y reemplazarlos por automatizaciones eficientes que trabajan 24/7."
+              icon={<BarChart />}
+              title="Business Intelligence (BI)"
+              desc="Visualiza tu éxito. Conecto tus fuentes de datos a Looker Studio para crear Dashboards en tiempo real que te permiten tomar decisiones basadas en datos."
             />
           </div>
         </div>
@@ -230,75 +240,98 @@ const App = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Automatizaciones Destacadas</h2>
-              <p className="text-gray-400">Ejemplos de cómo n8n + Python resuelven problemas reales.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Sistemas en Producción</h2>
+              <p className="text-gray-400">Casos reales de eficiencia sistémica.</p>
             </div>
             <button className="text-[#EA4B71] font-semibold flex items-center gap-2 hover:text-white transition-colors">
-              Ver Repo en GitHub <ArrowRight className="w-4 h-4" />
+              Ver Demos en GitHub <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="space-y-20">
             <ProjectCase 
-              title="Lead Scoring & Enrichment Automático"
-              category="Sales Automation"
-              problem="El equipo de ventas perdía tiempo investigando leads que llegaban desde formularios web, muchos de baja calidad."
-              solution="Workflow en n8n que: 1. Detecta nuevo lead. 2. Usa Python para limpiar el email. 3. Consulta API de LinkedIn/Clearbit para enriquecer datos. 4. Usa GPT-4 para calificar el lead (Hot/Cold). 5. Envía alerta a Slack."
-              result="Ahorro de 15 horas semanales al equipo de ventas y respuesta inmediata a leads calificados."
-              tags={['n8n', 'Python Code Node', 'OpenAI', 'Slack API', 'HubSpot']}
+              title="Dashboard de Ventas en Tiempo Real"
+              category="BI & Data Transformation"
+              problem="El director comercial esperaba al cierre de mes para ver las ventas. Los datos estaban dispersos en Stripe, CRM y Excel."
+              solution="Pipeline ETL en n8n que extrae datos de Stripe y HubSpot cada hora, los limpia con Python y los guarda en Supabase. Looker Studio visualiza los KPIs en vivo."
+              result="Visibilidad total del negocio 24/7 y toma de decisiones inmediata."
+              tags={['Looker Studio', 'Stripe API', 'Supabase', 'Python Pandas']}
+              // EJEMPLO: Imagen de un dashboard (reemplazar con tu propia captura)
+              imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
             />
             <ProjectCase 
-              title="Generador de Contenido Social IA"
-              category="Marketing Ops"
-              problem="Mantener las redes sociales activas requería demasiado esfuerzo manual de redacción y diseño básico."
-              solution="Sistema automatizado donde una idea en Notion dispara un flujo en n8n. Usa OpenAI para escribir el copy y Python para generar una imagen base (o conectar con DALL-E), programando el post automáticamente."
-              result="Incremento del 200% en la frecuencia de publicación sin intervención humana extra."
-              tags={['n8n', 'Notion Webhooks', 'OpenAI API', 'Python Image Lib']}
+              title="Cualificación de Leads con IA (Lead Scoring)"
+              category="Sales Automation"
+              problem="El equipo de ventas perdía horas contactando leads de baja calidad o 'curiosos', mientras los clientes potenciales reales se enfriaban."
+              solution="Flujo en n8n que recibe el lead, usa GPT-4 para analizar el perfil y clasificarlo. Los 'Hot Leads' reciben WhatsApp inmediato y alerta en Slack al vendedor."
+              result="Respuesta en < 60 segundos y aumento del 25% en conversión."
+              tags={['n8n', 'OpenAI', 'WhatsApp API', 'HubSpot']}
+              // EJEMPLO: Imagen de un chat o workflow de ventas (reemplazar con tu propia captura)
+              imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+            />
+            <ProjectCase 
+              title="Motor de Reactivación de Clientes"
+              category="Customer Retention (SQL + AI)"
+              problem="Una cadena de clínicas en CDMX tenía 15,000 ex-pacientes en su base de datos sin actividad reciente, perdiendo ingresos potenciales."
+              solution="Query SQL identifica pacientes 'Top Tier' inactivos por >90 días. Python genera una oferta personalizada basada en su historial. n8n envía el mensaje vía WhatsApp."
+              result="Recuperación del 18% de la base inactiva y $450k MXN generados en 1 mes."
+              tags={['PostgreSQL', 'Python Analytics', 'n8n', 'WhatsApp']}
+              // EJEMPLO: Imagen de base de datos o funnel (reemplazar con tu propia captura)
+              imageUrl="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=2070&auto=format&fit=crop"
             />
           </div>
         </div>
       </section>
 
-      {/* --- ABOUT --- */}
+      {/* --- PHILOSOPHY --- */}
       <section id="about" className="py-24 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 md:order-1">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-gray-800 border border-gray-700 relative z-10">
-               <div className="w-full h-full bg-gradient-to-br from-[#0B0F19] to-[#1A202C] flex items-center justify-center border-2 border-[#EA4B71]/30 p-8">
-                 <div className="text-center">
-                   <Workflow className="w-16 h-16 text-[#EA4B71] mx-auto mb-4" />
-                   <span className="text-gray-500 font-medium block">Estudiante & Maker</span>
-                   <span className="text-xs text-gray-600">Enfocado en eficiencia</span>
-                 </div>
-               </div>
-            </div>
-          </div>
-          
           <div className="order-1 md:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Sobre mí</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">El Enfoque "Systemic World"</h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                Hola, soy un <span className="text-white font-semibold">Desarrollador de Automatizaciones</span> en formación.
+                No soy un simple implementador de herramientas. Soy un <span className="text-white font-semibold">Arquitecto de Sistemas</span>.
               </p>
               <p>
-                Mientras muchos se enfocan solo en aprender teoría, yo me he obsesionado con una cosa: <span className="text-[#EA4B71]">hacer que las cosas funcionen solas</span>. Utilizo <strong>n8n</strong> como mi centro de mando y <strong>Python</strong> como mi navaja suiza para resolver lo que las herramientas estándar no pueden.
+                En <strong>Systemic World</strong>, creo que una empresa eficiente no es una colección de herramientas sueltas, sino un organismo integrado.
               </p>
               <p>
-                Mi filosofía es simple: si tienes que hacerlo más de tres veces, merece ser automatizado. Ayudo a pequeños negocios y emprendedores a recuperar su tiempo integrando sistemas inteligentes.
+                Uso <strong>n8n</strong> como el sistema nervioso central y <strong>Python</strong> para la inteligencia compleja, creando soluciones que no solo ahorran tiempo, sino que transforman la cultura operativa de tu negocio.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-6 mt-10">
               <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/50">
-                <h4 className="text-white font-bold mb-1">Low-Code First</h4>
-                <p className="text-sm text-gray-500">Velocidad de desarrollo.</p>
+                <h4 className="text-white font-bold mb-1">Visión Holística</h4>
+                <p className="text-sm text-gray-500">Todo está conectado.</p>
               </div>
               <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/50">
-                <h4 className="text-white font-bold mb-1">Code Second</h4>
-                <p className="text-sm text-gray-500">Python para complejidad.</p>
+                <h4 className="text-white font-bold mb-1">Escalabilidad</h4>
+                <p className="text-sm text-gray-500">Sistemas listos para crecer.</p>
               </div>
             </div>
           </div>
+           
+           {/* IMAGE PLACEHOLDER FOR PROFILE */}
+           <div className="relative order-2 md:order-1 h-full min-h-[400px] rounded-2xl overflow-hidden border border-gray-700 group">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent z-10"></div>
+              
+              {/* SUSTITUYE ESTE SRC CON TU FOTO REAL */}
+              <img 
+                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
+                alt="Fundador de Systemic World" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              
+              <div className="absolute bottom-0 left-0 p-8 z-20">
+                 {/* ESPACIO PARA LOGO O FIRMA EN FOOTER DE FOTO */}
+                 <div className="inline-block p-2 bg-[#EA4B71] rounded-lg mb-3">
+                    <span className="text-white font-bold text-xs">SW</span>
+                 </div>
+                 <h3 className="text-2xl font-bold text-white tracking-tight">Systemic World</h3>
+                 <p className="text-gray-300 text-sm mt-1">Tu Socio de Automatización</p>
+              </div>
+           </div>
         </div>
       </section>
 
@@ -306,20 +339,20 @@ const App = () => {
       <section id="contact" className="py-24 px-6 bg-gradient-to-b from-[#0B0F19] to-[#0F172A]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            ¿Tienes una tarea repetitiva?
+            Automatiza lo aburrido. Escala lo importante.
           </h2>
           <p className="text-xl text-gray-400 mb-12">
-            Déjame construir un robot que la haga por ti. Automatiza tus procesos hoy mismo con n8n.
+            ¿Listo para poner orden en tu caos operativo? Entra al Automation Lab.
           </p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
              <button className="w-full md:w-auto px-8 py-4 bg-[#EA4B71] hover:bg-[#D43A5A] text-white text-lg font-bold rounded-lg transition-all hover:shadow-[0_0_30px_rgba(234,75,113,0.4)] flex items-center justify-center gap-3">
                <Calendar className="w-5 h-5" />
-               Agendar Demo
+               Agendar Sesión de Diagnóstico
              </button>
              <button className="w-full md:w-auto px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white text-lg font-medium rounded-lg transition-all flex items-center justify-center gap-3 border border-gray-700">
                <Mail className="w-5 h-5" />
-               Contactar por Email
+               Email
              </button>
           </div>
 
@@ -330,6 +363,9 @@ const App = () => {
             <a href="#" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
               <Github className="w-6 h-6" />
             </a>
+            <a href="#" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
+              <Instagram className="w-6 h-6" />
+            </a>
           </div>
         </div>
       </section>
@@ -337,7 +373,7 @@ const App = () => {
       {/* --- FOOTER --- */}
       <footer className="py-8 border-t border-gray-800 text-center text-gray-600 text-sm">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; {new Date().getFullYear()} Automation Engineer. Powered by n8n & React.</p>
+          <p>&copy; {new Date().getFullYear()} Systemic World | Automation Lab.</p>
         </div>
       </footer>
     </div>
@@ -345,6 +381,13 @@ const App = () => {
 };
 
 // --- SUBCOMPONENTS ---
+
+const StackBadge = ({ color, text }) => (
+  <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/30 transition-all cursor-default">
+    <span className={`w-3 h-3 rounded-full ${color}`}></span>
+    <span className="text-lg font-bold text-white">{text}</span>
+  </div>
+);
 
 const WorkflowGenerator = () => {
   const [input, setInput] = useState('');
@@ -358,47 +401,41 @@ const WorkflowGenerator = () => {
     setError(null);
     setBlueprint(null);
 
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || ""; 
+    const apiKey = ""; 
     
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-09-2025" });
 
       const prompt = `
-        Actúa como un Ingeniero Senior de Automatización experto en n8n y Python.
+        Actúa como un Arquitecto de Sistemas en 'Systemic World'.
         El usuario tiene este problema/tarea manual: "${input}".
         
-        Diseña una solución técnica breve y concreta usando n8n.
-        Devuelve SOLO un objeto JSON válido (sin markdown, sin bloques de código) con esta estructura exacta:
+        Diseña una solución sistémica usando n8n, Python y Agentes de IA.
+        Devuelve SOLO un objeto JSON válido (sin markdown) con esta estructura:
         {
-          "trigger": "Nombre del nodo Trigger (ej: Google Sheets Trigger, Webhook, Schedule)",
-          "trigger_desc": "Breve explicación de cuándo se activa.",
-          "python_logic": "Descripción de qué haría el script de Python (ej: Limpieza de datos con Pandas, Regex para extraer emails)",
-          "action": "Nombre del nodo de Acción final (ej: Slack, Hubspot, Email)",
-          "action_desc": "Qué sucede al final.",
-          "benefit": "Una frase corta sobre el tiempo ahorrado o impacto."
+          "agent_name": "Nombre del Sistema (ej: 'InvoiceGuard AI System', 'LeadHunter Core')",
+          "trigger": "Evento disparador",
+          "workflow_steps": "Describe 3 pasos clave técnicos (ej: 'Ingesta vectorial', 'Script de Python de limpieza', 'Human-in-the-loop approval').",
+          "outcome": "Resultado de negocio (ej: 'Reducción del 90% en errores manuales')."
         }
       `;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
       let text = response.text();
-      
       text = text.replace(/```json/g, "").replace(/```/g, "").trim();
-      
       const data = JSON.parse(text);
       setBlueprint(data);
 
     } catch (err) {
       console.error(err);
-      setError("No pude conectar con mi cerebro digital en este momento (verifica tu API Key), pero aquí tienes un ejemplo:");
+      setError("Conectando con el Systemic Core... (Verifica tu API Key)"); 
       setBlueprint({
-        trigger: "Webhook / Form Submission",
-        trigger_desc: "Se activa cuando recibes los datos desordenados.",
-        python_logic: "Script de Python para normalizar texto y eliminar duplicados.",
-        action: "Google Sheets / CRM",
-        action_desc: "Guarda los datos limpios automáticamente.",
-        benefit: "Ahorro estimado de 5 horas manuales al mes."
+        agent_name: "DocuBrain System",
+        trigger: "Nuevo documento en Drive",
+        workflow_steps: "1. OCR y limpieza con Python. 2. Vectorización (Pinecone). 3. Agente QA valida datos críticos.",
+        outcome: "Datos extraídos con 99% de precisión y subidos al ERP."
       });
     } finally {
       setLoading(false);
@@ -411,11 +448,11 @@ const WorkflowGenerator = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA4B71]/10 border border-[#EA4B71]/30 text-[#EA4B71] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3 h-3" />
-            Powered by Gemini AI
+            Systemic World Lab
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Arquitecto de Workflows</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Diseña tu Sistema</h2>
           <p className="text-gray-400">
-            Cuéntame una tarea aburrida que hagas manualmente. Diseñaré una solución técnica con n8n y Python para ti en tiempo real.
+            Describe un cuello de botella en tu operación. Diseñaré la arquitectura de un sistema autónomo para resolverlo.
           </p>
         </div>
 
@@ -427,7 +464,7 @@ const WorkflowGenerator = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && generateBlueprint()}
-              placeholder="Ej: Tengo que descargar facturas del correo y subirlas a Drive..."
+              placeholder="Ej: Necesito leer contratos legales y extraer las cláusulas de riesgo..."
               className="flex-1 bg-gray-800/50 border border-gray-600 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-[#EA4B71] focus:ring-1 focus:ring-[#EA4B71] placeholder-gray-500 transition-all"
             />
             <button 
@@ -435,53 +472,48 @@ const WorkflowGenerator = () => {
               disabled={loading || !input.trim()}
               className="bg-[#EA4B71] hover:bg-[#D43A5A] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all min-w-[160px]"
             >
-              {loading ? <Loader className="w-5 h-5 animate-spin" /> : <><Cpu className="w-5 h-5" /> Diseñar</>}
+              {loading ? <Loader className="w-5 h-5 animate-spin" /> : <><BrainCircuit className="w-5 h-5" /> Generar</>}
             </button>
           </div>
 
           {/* Results Area */}
           {blueprint && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-               {error && <p className="text-yellow-500 text-sm mb-4 text-center">{error}</p>}
+               {error && <p className="text-gray-400 text-sm mb-4 text-center italic">{error}</p>}
                
-               <div className="grid md:grid-cols-3 gap-4 relative">
-                 <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-[#EA4B71] via-[#3776AB] to-green-500 -z-0"></div>
-
-                 {/* Step 1: Trigger */}
-                 <div className="bg-[#1A202C] border border-[#EA4B71]/50 p-5 rounded-xl relative z-10 flex flex-col items-center text-center hover:border-[#EA4B71] transition-colors">
-                   <div className="w-10 h-10 bg-[#EA4B71]/20 rounded-full flex items-center justify-center mb-3 text-[#EA4B71] border border-[#EA4B71]">
-                     <Zap className="w-5 h-5" />
-                   </div>
-                   <h4 className="text-white font-bold mb-1">{blueprint.trigger}</h4>
-                   <p className="text-xs text-gray-400">{blueprint.trigger_desc}</p>
+               <div className="bg-[#1A202C] border border-[#EA4B71]/30 rounded-xl p-6 relative overflow-hidden">
+                 <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Bot size={100} className="text-[#EA4B71]" />
                  </div>
-
-                 {/* Step 2: Logic */}
-                 <div className="bg-[#1A202C] border border-[#3776AB]/50 p-5 rounded-xl relative z-10 flex flex-col items-center text-center hover:border-[#3776AB] transition-colors shadow-[0_0_20px_rgba(55,118,171,0.1)]">
-                   <div className="w-10 h-10 bg-[#3776AB]/20 rounded-full flex items-center justify-center mb-3 text-[#3776AB] border border-[#3776AB]">
-                     <Code className="w-5 h-5" />
+                 
+                 <div className="relative z-10">
+                   <div className="text-[#EA4B71] text-xs font-bold uppercase tracking-widest mb-2">Arquitectura Propuesta</div>
+                   <h3 className="text-2xl font-bold text-white mb-6">{blueprint.agent_name}</h3>
+                   
+                   <div className="grid md:grid-cols-3 gap-6 mb-6">
+                      <div>
+                        <span className="text-gray-500 text-xs uppercase font-bold">Disparador</span>
+                        <p className="text-gray-300 mt-1">{blueprint.trigger}</p>
+                      </div>
+                      <div className="md:col-span-2">
+                        <span className="text-gray-500 text-xs uppercase font-bold">Lógica del Sistema</span>
+                        <p className="text-gray-300 mt-1">{blueprint.workflow_steps}</p>
+                      </div>
                    </div>
-                   <h4 className="text-white font-bold mb-1">Python Logic</h4>
-                   <p className="text-xs text-gray-400">{blueprint.python_logic}</p>
-                 </div>
 
-                 {/* Step 3: Action */}
-                 <div className="bg-[#1A202C] border border-green-500/50 p-5 rounded-xl relative z-10 flex flex-col items-center text-center hover:border-green-500 transition-colors">
-                   <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mb-3 text-green-500 border border-green-500">
-                     <CheckCircle className="w-5 h-5" />
+                   <div className="bg-[#EA4B71]/10 border border-[#EA4B71]/20 p-4 rounded-lg flex items-center gap-3">
+                      <Zap className="text-[#EA4B71] w-5 h-5 shrink-0" />
+                      <div>
+                        <span className="text-[#EA4B71] text-xs font-bold uppercase">Impacto de Negocio</span>
+                        <p className="text-white font-medium text-sm">{blueprint.outcome}</p>
+                      </div>
                    </div>
-                   <h4 className="text-white font-bold mb-1">{blueprint.action}</h4>
-                   <p className="text-xs text-gray-400">{blueprint.action_desc}</p>
                  </div>
                </div>
 
-               <div className="mt-8 bg-white/5 border border-white/10 rounded-lg p-4 flex items-center justify-between gap-4">
-                 <div>
-                   <span className="text-xs text-gray-500 uppercase font-bold tracking-wider">Impacto Estimado</span>
-                   <p className="text-[#EA4B71] font-bold text-lg">{blueprint.benefit}</p>
-                 </div>
-                 <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="shrink-0 text-sm bg-white text-black px-4 py-2 rounded font-semibold hover:bg-gray-200 transition-colors">
-                   Construir esto
+               <div className="mt-6 text-center">
+                 <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="text-sm text-gray-400 hover:text-white underline decoration-[#EA4B71] underline-offset-4 transition-colors">
+                   Quiero que construyas este sistema para mí
                  </button>
                </div>
             </div>
@@ -506,37 +538,45 @@ const ServiceCard = ({ icon, title, desc }) => (
   </div>
 );
 
-const ProjectCase = ({ title, category, problem, solution, result, tags }) => (
-  <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 border-l-2 border-gray-800 pl-6 md:pl-12 hover:border-[#EA4B71] transition-colors py-2">
-    <div>
-      <div className="text-[#EA4B71] font-medium text-sm mb-2">{category}</div>
-      <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-      <div className="flex flex-wrap gap-2">
-        {tags.map(tag => (
-          <span key={tag} className="px-2 py-1 bg-gray-800 rounded text-xs text-gray-300 font-mono">
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-    <div className="space-y-6">
+const ProjectCase = ({ title, category, problem, solution, result, tags, imageUrl }) => (
+  <div className="group relative overflow-hidden bg-[#0F172A] border border-gray-800 rounded-2xl hover:border-[#EA4B71]/50 transition-all duration-300">
+    {imageUrl && (
+        <div className="w-full h-48 bg-gray-800 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent z-10"></div>
+            <img src={imageUrl} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60 group-hover:opacity-100" />
+        </div>
+    )}
+    <div className="p-8 grid md:grid-cols-[1fr_2fr] gap-8">
       <div>
-        <h4 className="text-white font-semibold flex items-center gap-2 mb-2">
-          <div className="w-1.5 h-1.5 bg-red-500 rounded-full"></div> El Desafío
-        </h4>
-        <p className="text-gray-400">{problem}</p>
+        <div className="text-[#EA4B71] font-medium text-sm mb-2">{category}</div>
+        <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
+        <div className="flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span key={tag} className="px-2 py-1 bg-gray-800 rounded text-xs text-gray-300 font-mono">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
-      <div>
-        <h4 className="text-white font-semibold flex items-center gap-2 mb-2">
-          <div className="w-1.5 h-1.5 bg-[#EA4B71] rounded-full"></div> Workflow n8n
-        </h4>
-        <p className="text-gray-400">{solution}</p>
-      </div>
-      <div className="bg-[#EA4B71]/10 border border-[#EA4B71]/20 p-4 rounded-lg">
-        <h4 className="text-[#EA4B71] font-bold flex items-center gap-2 mb-1">
-          <CheckCircle className="w-4 h-4" /> Impacto
-        </h4>
-        <p className="text-gray-300 font-medium">{result}</p>
+      <div className="space-y-6">
+        <div>
+          <h4 className="text-white font-semibold flex items-center gap-2 mb-2">
+            <div className="w-1.5 h-1.5 bg-red-500 rounded-full"></div> Problema Operativo
+          </h4>
+          <p className="text-gray-400">{problem}</p>
+        </div>
+        <div>
+          <h4 className="text-white font-semibold flex items-center gap-2 mb-2">
+            <div className="w-1.5 h-1.5 bg-[#EA4B71] rounded-full"></div> Solución n8n + AI
+          </h4>
+          <p className="text-gray-400">{solution}</p>
+        </div>
+        <div className="bg-[#EA4B71]/10 border border-[#EA4B71]/20 p-4 rounded-lg">
+          <h4 className="text-[#EA4B71] font-bold flex items-center gap-2 mb-1">
+            <CheckCircle className="w-4 h-4" /> ROI (Retorno de Inversión)
+          </h4>
+          <p className="text-gray-300 font-medium">{result}</p>
+        </div>
       </div>
     </div>
   </div>
