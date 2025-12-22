@@ -9,6 +9,18 @@ import {
 } from 'lucide-react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
+// --- CONFIGURACIÓN DE TUS REDES SOCIALES ---
+// (Puedes editar estos links directamente aquí más tarde)
+const SOCIAL_LINKS = {
+  linkedin: "https://linkedin.com/in/TU_USUARIO",
+  github: "https://github.com/TU_USUARIO",
+  instagram: "https://instagram.com/TU_USUARIO",
+  tiktok: "https://tiktok.com/@TU_USUARIO",
+  youtube: "https://youtube.com/@TU_CANAL",
+  whatsapp: "https://wa.me/5215500000000", // Pon tu número con lada (ej: 521...)
+  email: "mailto:project.manager@systemicworld.tech"
+};
+
 // Icono personalizado de TikTok
 const TikTokIcon = ({ className }) => (
   <svg 
@@ -24,6 +36,24 @@ const TikTokIcon = ({ className }) => (
     className={className}
   >
     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
+// Icono personalizado de WhatsApp
+const WhatsAppIcon = ({ className }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
   </svg>
 );
 
@@ -267,7 +297,7 @@ const App = () => {
       {/* --- AI PLAYGROUND (CLÍNICA DE PROCESOS 2.0) --- */}
       <WorkflowGenerator />
 
-      {/* --- PHILOSOPHY (VISUAL & EMOCIONAL) --- */}
+      {/* --- PHILOSOPHY --- */}
       <section id="about" className="py-32 px-6 relative overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-1/2 left-0 w-1/3 h-1/3 bg-[#3776AB]/10 rounded-full blur-[120px] -z-10"></div>
@@ -282,7 +312,6 @@ const App = () => {
               Manifiesto Systemic
             </div>
             
-            {/* TÍTULO CON LETRA UN POCO MÁS DELGADA (font-semibold) */}
             <h2 className="text-4xl lg:text-6xl font-semibold text-white mb-8 leading-tight">
                No construimos software. <br/>
                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Construimos Libertad.</span>
@@ -340,7 +369,7 @@ const App = () => {
                  <div className="absolute bottom-8 left-8 right-8 z-20">
                     <div className="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-5 transform translate-y-0 transition-transform duration-500 hover:-translate-y-2">
                         <div className="w-12 h-12 bg-gradient-to-br from-[#EA4B71] to-[#D43A5A] rounded-full flex items-center justify-center shadow-lg shrink-0">
-                             <Network className="w-6 h-6 text-white" />
+                             <span className="text-[10px] font-bold text-white">LOGO</span>
                         </div>
                         <div>
                              <h3 className="text-xl font-bold text-white tracking-tight">Systemic World</h3>
@@ -356,8 +385,8 @@ const App = () => {
       {/* --- CONTACT / CTA --- */}
       <section id="contact" className="py-24 px-6 bg-gradient-to-b from-[#0B0F19] to-[#0F172A]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Automatiza lo aburrido. Escala lo importante.
+          <h2 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#EA4B71] to-[#FF6D5A] mb-8 leading-tight">
+            Automatiza lo aburrido.<br/>Escala lo importante.
           </h2>
           <p className="text-xl text-gray-400 mb-12">
             ¿Listo para poner orden en tu caos operativo? Entra al Automation Lab.
@@ -368,27 +397,30 @@ const App = () => {
                <Calendar className="w-5 h-5" />
                Agendar Sesión de Diagnóstico
              </button>
-             <a href="mailto:project.manager@systemicworld.tech" className="w-full md:w-auto px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white text-lg font-medium rounded-lg transition-all flex items-center justify-center gap-3 border border-gray-700">
+             <a href={SOCIAL_LINKS.email} className="w-full md:w-auto px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white text-lg font-medium rounded-lg transition-all flex items-center justify-center gap-3 border border-gray-700">
                <Mail className="w-5 h-5" />
                Email
              </a>
           </div>
 
           <div className="flex justify-center gap-8 mb-8">
-            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-[#0077B5] hover:text-white text-gray-400 transition-all">
+            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-[#0077B5] hover:text-white text-gray-400 transition-all">
               <Linkedin className="w-6 h-6" />
             </a>
-            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
+            <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
               <Github className="w-6 h-6" />
             </a>
-            <a href="https://instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
+            <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
               <Instagram className="w-6 h-6" />
             </a>
-            <a href="https://tiktok.com/@tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
+            <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
               <TikTokIcon className="w-6 h-6" />
             </a>
-            <a href="https://youtube.com/@tu-canal" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-red-600 hover:text-white text-gray-400 transition-all">
+            <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-red-600 hover:text-white text-gray-400 transition-all">
               <Youtube className="w-6 h-6" />
+            </a>
+            <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-green-500 hover:text-white text-gray-400 transition-all">
+              <WhatsAppIcon className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -524,8 +556,8 @@ const WorkflowGenerator = () => {
 
   // Función para abrir WhatsApp
   const openWhatsApp = () => {
-    // Reemplaza este número con tu número real de WhatsApp (código de país + número, sin espacios ni símbolos)
-    const phoneNumber = "5215500000000"; 
+    // Usa el número definido en SOCIAL_LINKS pero limpio de caracteres
+    const phoneNumber = SOCIAL_LINKS.whatsapp.replace('https://wa.me/', '');
     const message = encodeURIComponent("Hola! Estoy interesado en iniciar un protocolo de construcción de automatización con IA personalizada para mi empresa");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -598,7 +630,7 @@ const WorkflowGenerator = () => {
           {/* Results Area (Holographic Card) */}
           {blueprint && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-               {error && <p className="text-gray-400 text-sm mb-4 text-center italic font-mono">> {error}</p>}
+               {error && <p className="text-gray-400 text-sm mb-4 text-center italic font-mono">&gt; {error}</p>}
                
                <div className="bg-[#1A202C]/80 border-l-4 border-l-[#EA4B71] border-y border-r border-gray-700/50 rounded-r-xl p-8 relative overflow-hidden backdrop-blur-md">
                  
@@ -664,7 +696,7 @@ const WorkflowGenerator = () => {
                <div className="mt-8 text-center animate-bounce">
                  <ArrowDown className="w-6 h-6 text-gray-600 mx-auto mb-2" />
                  <button onClick={openWhatsApp} className="text-sm text-gray-400 hover:text-white hover:underline decoration-[#EA4B71] underline-offset-4 transition-colors font-mono">
-                   > INICIAR PROTOCOLO DE CONSTRUCCIÓN
+                   &gt; INICIAR PROTOCOLO DE CONSTRUCCIÓN
                  </button>
                </div>
             </div>
