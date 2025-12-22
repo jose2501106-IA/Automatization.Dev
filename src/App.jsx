@@ -37,10 +37,9 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="text-2xl font-bold tracking-tight text-white flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
             
-            {/* --- ESPACIO PARA TU LOGO DE CANVA --- */}
-            {/* Cuando tengas tu archivo, guárdalo en la carpeta public y cambia el src */}
-            {/* Ejemplo: <img src="/logo-systemic.png" alt="Logo" className="w-10 h-10 object-contain" /> */}
+            {/* --- TU LOGO (Reemplazar con archivo real cuando lo tengas) --- */}
             <div className="w-10 h-10 bg-[#EA4B71]/20 border border-[#EA4B71] rounded-lg flex items-center justify-center">
+               {/* <img src="/logo-systemic.png" alt="Logo" className="w-full h-full object-contain p-1" /> */}
                <span className="text-[10px] text-[#EA4B71] font-bold">LOGO</span>
             </div>
             {/* ------------------------------------- */}
@@ -88,7 +87,6 @@ const App = () => {
 
       {/* --- HERO SECTION --- */}
       <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
-        {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#EA4B71]/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#3776AB]/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
@@ -114,15 +112,11 @@ const App = () => {
             </div>
           </div>
           
-          {/* Visual: Systemic Architecture */}
           <div className="relative h-[400px] lg:h-[500px] w-full flex items-center justify-center">
              <div className="relative w-full h-full border border-gray-800/50 rounded-2xl bg-[#0F172A]/30 backdrop-blur-sm p-8 overflow-hidden group">
                 <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-700/50 -z-10"></div>
                 
-                {/* Visualizing the "System" */}
                 <div className="flex flex-col gap-4 h-full justify-center relative z-10">
-                  
-                  {/* Step 1: Chaos Input */}
                   <div className="flex items-center gap-4 self-start animate-in slide-in-from-left duration-1000">
                     <div className="bg-[#1A202C] border border-gray-600 p-3 rounded-lg w-12 h-12 flex items-center justify-center">
                       <FileText className="text-gray-400" />
@@ -134,7 +128,6 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Step 2: Systemic Core (The Lab) */}
                   <div className="flex items-center gap-4 self-center ml-12 animate-in slide-in-from-left duration-1000 delay-300">
                      <div className="bg-[#1A202C] border border-[#3776AB] p-6 rounded-xl w-64 shadow-[0_0_20px_rgba(55,118,171,0.2)] relative">
                         <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#EA4B71] rounded-full flex items-center justify-center text-[10px] font-bold text-white border-4 border-[#0B0F19]">LAB</div>
@@ -152,7 +145,6 @@ const App = () => {
                      </div>
                   </div>
 
-                  {/* Step 3: Structured Output */}
                   <div className="flex items-center gap-4 self-end animate-in slide-in-from-left duration-1000 delay-500">
                     <div className="bg-[#1A202C] border border-green-500 p-4 rounded-lg w-48 shadow-[0_0_15px_rgba(34,197,94,0.2)] text-right">
                       <div className="text-xs font-bold text-green-500 mb-1">RESULTADO DE NEGOCIO</div>
@@ -163,7 +155,6 @@ const App = () => {
                       <CheckCircle className="text-green-500" />
                     </div>
                   </div>
-
                 </div>
              </div>
           </div>
@@ -232,7 +223,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- AI PLAYGROUND: Workflow Blueprint --- */}
+      {/* --- AI PLAYGROUND --- */}
       <WorkflowGenerator />
 
       {/* --- PROJECTS / WORKFLOWS --- */}
@@ -256,7 +247,6 @@ const App = () => {
               solution="Pipeline ETL en n8n que extrae datos de Stripe y HubSpot cada hora, los limpia con Python y los guarda en Supabase. Looker Studio visualiza los KPIs en vivo."
               result="Visibilidad total del negocio 24/7 y toma de decisiones inmediata."
               tags={['Looker Studio', 'Stripe API', 'Supabase', 'Python Pandas']}
-              // EJEMPLO: Imagen de un dashboard (reemplazar con tu propia captura)
               imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
             />
             <ProjectCase 
@@ -266,7 +256,6 @@ const App = () => {
               solution="Flujo en n8n que recibe el lead, usa GPT-4 para analizar el perfil y clasificarlo. Los 'Hot Leads' reciben WhatsApp inmediato y alerta en Slack al vendedor."
               result="Respuesta en < 60 segundos y aumento del 25% en conversión."
               tags={['n8n', 'OpenAI', 'WhatsApp API', 'HubSpot']}
-              // EJEMPLO: Imagen de un chat o workflow de ventas (reemplazar con tu propia captura)
               imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
             />
             <ProjectCase 
@@ -276,8 +265,8 @@ const App = () => {
               solution="Query SQL identifica pacientes 'Top Tier' inactivos por >90 días. Python genera una oferta personalizada basada en su historial. n8n envía el mensaje vía WhatsApp."
               result="Recuperación del 18% de la base inactiva y $450k MXN generados en 1 mes."
               tags={['PostgreSQL', 'Python Analytics', 'n8n', 'WhatsApp']}
-              // EJEMPLO: Imagen de base de datos o funnel (reemplazar con tu propia captura)
-              imageUrl="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=2070&auto=format&fit=crop"
+              // NUEVA IMAGEN: Estrategia Digital y Conexión
+              imageUrl="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
             />
           </div>
         </div>
@@ -312,19 +301,17 @@ const App = () => {
             </div>
           </div>
            
-           {/* IMAGE PLACEHOLDER FOR PROFILE */}
            <div className="relative order-2 md:order-1 h-full min-h-[400px] rounded-2xl overflow-hidden border border-gray-700 group">
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent z-10"></div>
               
-              {/* SUSTITUYE ESTE SRC CON TU FOTO REAL */}
+              {/* TU FOTO DE PERFIL */}
               <img 
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
-                alt="Fundador de Systemic World" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                src="/profile-systemic.jpg" 
+                alt="José Hugo - Fundador de Systemic World" 
+                className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700"
               />
               
               <div className="absolute bottom-0 left-0 p-8 z-20">
-                 {/* ESPACIO PARA LOGO O FIRMA EN FOOTER DE FOTO */}
                  <div className="inline-block p-2 bg-[#EA4B71] rounded-lg mb-3">
                     <span className="text-white font-bold text-xs">SW</span>
                  </div>
@@ -357,13 +344,13 @@ const App = () => {
           </div>
 
           <div className="flex justify-center gap-8 mb-8">
-            <a href="#" className="p-3 bg-gray-800/50 rounded-full hover:bg-[#0077B5] hover:text-white text-gray-400 transition-all">
+            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-[#0077B5] hover:text-white text-gray-400 transition-all">
               <Linkedin className="w-6 h-6" />
             </a>
-            <a href="#" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
+            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-black hover:text-white text-gray-400 transition-all">
               <Github className="w-6 h-6" />
             </a>
-            <a href="#" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
+            <a href="https://instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-800/50 rounded-full hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-purple-500 hover:text-white text-gray-400 transition-all">
               <Instagram className="w-6 h-6" />
             </a>
           </div>
