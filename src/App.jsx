@@ -571,7 +571,7 @@ const WorkflowGenerator = () => {
             <Stethoscope className="w-3 h-3" />
             Clínica de Procesos
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Cuál es tu Mayor Dolor de Cabeza en tu organización?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Cuál es el Mayor Dolor de Cabeza en tu organización?</h2>
           <p className="text-gray-400">
             Cuéntame qué proceso te quita el sueño. Diseñemos la mejor solución.
           </p>
