@@ -83,14 +83,13 @@ const App = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800 py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           
-          {/* LOGO PRINCIPAL (IMAGEN PNG COMPLETA) */}
-          <div className="cursor-pointer flex items-center" onClick={() => scrollToSection('home')}>
-             {/* Ajusta h-12 o h-14 según el tamaño de tu imagen para que se vea bien */}
-             <img 
-               src="/logo.png" 
-               alt="Systemic World Logo" 
-               className="h-14 w-auto object-contain" 
-             />
+          {/* LOGO SYSTEMIC WORLD (IMAGEN PANORÁMICA) */}
+          <div className="cursor-pointer" onClick={() => scrollToSection('home')}>
+            <img 
+              src="/logo-systemic.png" 
+              alt="Systemic World" 
+              className="h-10 md:h-14 w-auto object-contain" 
+            />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
