@@ -145,10 +145,10 @@ const App = () => {
                 Automation Lab
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6">
-                Transformo el caos en un <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EA4B71] to-[#FF6D5A]">Sistema Inteligente</span>.
+                Transforma el caos en un <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EA4B71] to-[#FF6D5A]">Sistema Inteligente</span>.
               </h1>
               <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
-                No pongo parches. Diseño ecosistemas de automatización con <strong>n8n, Python y LLMs</strong> que leen documentos, toman decisiones y ejecutan procesos complejos, permitiendo que tu negocio funcione como un reloj suizo.
+                No poemos parches. Diseñamos ecosistemas de automatización con <strong>n8n, Python y LLMs</strong> que leen documentos, toman decisiones y ejecutan procesos complejos, permitiendo que tu negocio funcione como un reloj suizo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button onClick={() => scrollToSection('playground')} className="px-8 py-4 bg-[#EA4B71] hover:bg-[#D43A5A] text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all hover:translate-y-[-2px] shadow-[0_0_20px_rgba(234,75,113,0.3)]">
@@ -559,7 +559,7 @@ const WorkflowGenerator = () => {
   const openWhatsApp = () => {
     // Usa el número definido en SOCIAL_LINKS pero limpio de caracteres
     const phoneNumber = SOCIAL_LINKS.whatsapp.replace('https://wa.me/', '');
-    const message = encodeURIComponent("Hola! Estoy interesado en iniciar un protocolo de construcción de automatización con IA personalizada para mi empresa");
+    const message = encodeURIComponent("Hola! Estoy interesado en iniciar un protocolo de construcción de automatización con IA personalizada para mi organización");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -571,9 +571,9 @@ const WorkflowGenerator = () => {
             <Stethoscope className="w-3 h-3" />
             Clínica de Procesos
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Cuál es tu Mayor Dolor de Cabeza?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Cuál es tu Mayor Dolor de Cabeza en tu organización?</h2>
           <p className="text-gray-400">
-            Cuéntame qué proceso te quita el sueño. Mi IA diseñará la medicina exacta para curarlo.
+            Cuéntame qué proceso te quita el sueño. Diseñemos la mejor solución.
           </p>
         </div>
 
