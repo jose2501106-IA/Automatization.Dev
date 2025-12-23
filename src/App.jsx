@@ -88,7 +88,7 @@ const App = () => {
             <img 
               src="/logo-systemic.png" 
               alt="Systemic World" 
-              className="h-10 md:h-14 w-auto object-contain" 
+              className="h-16 md:h-24 w-auto object-contain" 
             />
           </div>
 
