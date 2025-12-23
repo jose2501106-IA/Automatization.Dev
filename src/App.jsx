@@ -80,16 +80,16 @@ const App = () => {
     <div className="min-h-screen bg-[#0B0F19] text-[#E5E7EB] font-sans selection:bg-[#EA4B71] selection:text-white">
       
       {/* --- NAVIGATION --- */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800 py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           
-          {/* LOGO SYSTEMIC WORLD (IMAGEN) */}
-          <div className="cursor-pointer" onClick={() => scrollToSection('home')}>
-             {/* Asegúrate de que el archivo se llame logo-systemic.png o .jpg en tu carpeta public */}
+          {/* LOGO PRINCIPAL (IMAGEN PNG COMPLETA) */}
+          <div className="cursor-pointer flex items-center" onClick={() => scrollToSection('home')}>
+             {/* Ajusta h-12 o h-14 según el tamaño de tu imagen para que se vea bien */}
              <img 
-               src="/logo-systemic.png" 
+               src="/logo.png" 
                alt="Systemic World Logo" 
-               className="h-10 md:h-12 w-auto object-contain" 
+               className="h-14 w-auto object-contain" 
              />
           </div>
 
@@ -208,7 +208,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="mt-16 w-full text-center">
+          <div className="w-full flex justify-center mt-16 mb-4">
              <p className="text-4xl md:text-5xl font-bold text-white tracking-tight text-center max-w-5xl leading-tight mx-auto">
                Automatizaciones con <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-5xl md:text-6xl">IA</span> Personalizada
              </p>
@@ -234,7 +234,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- SERVICES --- */}
+      {/* --- SERVICES (VISUAL & EMOCIONAL) --- */}
       <section id="services" className="py-24 px-6 relative">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#0B0F19] to-[#0F172A] -z-10"></div>
         <div className="max-w-7xl mx-auto">
@@ -368,9 +368,9 @@ const App = () => {
                  {/* Floating Badge */}
                  <div className="absolute bottom-8 left-8 right-8 z-20">
                     <div className="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-5 transform translate-y-0 transition-transform duration-500 hover:-translate-y-2">
-                        <div className="w-12 h-12 bg-gradient-to-br from-[#EA4B71] to-[#D43A5A] rounded-full flex items-center justify-center shadow-lg shrink-0">
-                             {/* CAMBIO AQUÍ: LOGO EN LUGAR DE ICONO DE RED */}
-                             <span className="text-[10px] font-bold text-white">LOGO</span>
+                        {/* CÍRCULO CON LA IMAGEN DE TU LOGO */}
+                        <div className="w-12 h-12 bg-gradient-to-br from-[#EA4B71] to-[#D43A5A] rounded-full flex items-center justify-center shadow-lg shrink-0 overflow-hidden p-1">
+                             <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
                         </div>
                         <div>
                              <h3 className="text-xl font-bold text-white tracking-tight">Systemic World</h3>
