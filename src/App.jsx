@@ -10,14 +10,13 @@ import {
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // --- CONFIGURACIÓN DE TUS REDES SOCIALES ---
-// (Puedes editar estos links directamente aquí más tarde)
 const SOCIAL_LINKS = {
   linkedin: "https://linkedin.com/in/TU_USUARIO",
   github: "https://github.com/TU_USUARIO",
   instagram: "https://instagram.com/TU_USUARIO",
   tiktok: "https://tiktok.com/@TU_USUARIO",
   youtube: "https://youtube.com/@TU_CANAL",
-  whatsapp: "https://wa.me/5215500000000", // Pon tu número con lada (ej: 521...)
+  whatsapp: "https://wa.me/5215500000000", 
   email: "mailto:project.manager@systemicworld.tech"
 };
 
@@ -83,14 +82,15 @@ const App = () => {
       {/* --- NAVIGATION --- */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
-            
-            {/* --- LOGO --- */}
-            <div className="w-12 h-12 bg-[#EA4B71]/20 border border-[#EA4B71] rounded-lg flex items-center justify-center">
-               <span className="text-xs text-[#EA4B71] font-bold">LOGO</span>
-            </div>
-
-            <span className="text-3xl font-bold tracking-tight text-white">Systemic World</span>
+          
+          {/* LOGO SYSTEMIC WORLD (IMAGEN) */}
+          <div className="cursor-pointer" onClick={() => scrollToSection('home')}>
+             {/* Asegúrate de que el archivo se llame logo-systemic.png o .jpg en tu carpeta public */}
+             <img 
+               src="/logo-systemic.png" 
+               alt="Systemic World Logo" 
+               className="h-10 md:h-12 w-auto object-contain" 
+             />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
@@ -208,7 +208,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="w-full flex justify-center mt-16 mb-4">
+          <div className="mt-16 w-full text-center">
              <p className="text-4xl md:text-5xl font-bold text-white tracking-tight text-center max-w-5xl leading-tight mx-auto">
                Automatizaciones con <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-5xl md:text-6xl">IA</span> Personalizada
              </p>
@@ -297,7 +297,7 @@ const App = () => {
       {/* --- AI PLAYGROUND (CLÍNICA DE PROCESOS 2.0) --- */}
       <WorkflowGenerator />
 
-      {/* --- PHILOSOPHY --- */}
+      {/* --- PHILOSOPHY (VISUAL & EMOCIONAL) --- */}
       <section id="about" className="py-32 px-6 relative overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-1/2 left-0 w-1/3 h-1/3 bg-[#3776AB]/10 rounded-full blur-[120px] -z-10"></div>
@@ -369,6 +369,7 @@ const App = () => {
                  <div className="absolute bottom-8 left-8 right-8 z-20">
                     <div className="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-5 transform translate-y-0 transition-transform duration-500 hover:-translate-y-2">
                         <div className="w-12 h-12 bg-gradient-to-br from-[#EA4B71] to-[#D43A5A] rounded-full flex items-center justify-center shadow-lg shrink-0">
+                             {/* CAMBIO AQUÍ: LOGO EN LUGAR DE ICONO DE RED */}
                              <span className="text-[10px] font-bold text-white">LOGO</span>
                         </div>
                         <div>
